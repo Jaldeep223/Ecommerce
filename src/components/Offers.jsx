@@ -3,23 +3,28 @@ import exclusive from "../assets/exclusive_image.webp";
 
 const Offers = () => {
   return (
-    <div className="w-screen h-screen flex items-center justify-center bg-gradient-to-b from-[#47fdae] to-[#e1ffea22]">
-      <div className="w-[50%]  max-w-5xl h-auto flex px-[80px] py-10 rounded-lg ">
-        <div className="flex-1 flex flex-col justify-center">
-          <h1 className="text-[#171717] text-4xl font-bold leading-tight">Exclusive</h1>
-          <h1 className="text-[#171717] text-4xl font-bold leading-tight">Offers For You</h1>
-          <p className="text-[#171717] text-lg font-semibold mt-2">
+    <div className="w-full px-4 py-12 bg-gradient-to-b from-[#47fdae] to-[#e1ffea22]">
+      <div className="max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-center gap-12">
+        
+        {/* Left Content */}
+        <div className="flex-1 text-center md:text-left">
+          <h1 className="text-3xl sm:text-4xl font-bold text-[#171717] leading-snug">
+            Exclusive <br className="block sm:hidden" /> Offers For You
+          </h1>
+          <p className="text-lg font-medium text-[#171717] mt-4">
             ONLY ON BEST SELLERS PRODUCTS
           </p>
-          <button className="w-[200px] h-[40px] rounded-full bg-[#ff4141] border-none text-white text-base font-medium mt-8 cursor-pointer hover:bg-red-600 transition">
+          <button className="mt-6 w-48 h-11 rounded-full bg-[#ff4141] text-white text-base font-semibold hover:bg-red-600 transition-all duration-200">
             Check Now
           </button>
         </div>
-        <div className="flex-1 flex items-center justify-center">
+
+        {/* Right Image */}
+        <div className="flex-1 flex justify-center">
           <img
             src={exclusive}
             alt="Exclusive Offer"
-            className="h-[330px] rounded-lg object-contain"
+            className="w-full max-w-[300px] sm:max-w-[400px] md:max-w-[450px] object-contain rounded-lg"
           />
         </div>
       </div>
@@ -28,5 +33,3 @@ const Offers = () => {
 };
 
 export default Offers;
-
-

@@ -2,42 +2,46 @@ import React from 'react';
 
 const LoginSignup = () => {
   return (
-    <div className="w-full h-screen bg-gradient-to-b from-[#47fdae] to-[#e1ffea22] pt-[50px] flex items-center justify-center">
-      <div className="w-[500px] h-[500px] bg-white mx-auto px-[60px] pt-[20px] pb-[100px] border border-black rounded-[20px]">
-        <h1 className="mt-8 text-3xl font-semibold">Sign Up</h1>
+    <div className="min-h-screen bg-gradient-to-b from-[#47fdae] to-[#e1ffea22] pt-12 flex items-center justify-center px-4">
+      <div className="w-full max-w-md bg-white p-8 rounded-2xl border border-black">
+        <h1 className="text-3xl font-semibold text-center mb-8">Sign Up</h1>
 
-        <div className="flex flex-col gap-[30px] mt-[30px] flex items-center justify-center">
+        <form className="flex flex-col gap-6">
           <input
             type="text"
             placeholder="Your Name"
-            className="h-[40px] w-sm pl-[20px] border border-[#c9c9c9] outline-none text-[#5c5c5c] text-[18px] font-medium cursor-pointer"
+            className="h-10 w-full px-5 border border-[#c9c9c9] rounded-md text-[#5c5c5c] text-lg font-medium focus:outline-none focus:ring-2 focus:ring-[#ff4141]"
           />
           <input
             type="email"
             placeholder="Email Address"
-            className="h-[40px] w-sm pl-[20px] border border-[#c9c9c9] outline-none text-[#5c5c5c] text-[18px] font-medium cursor-pointer"
+            className="h-10 w-full px-5 border border-[#c9c9c9] rounded-md text-[#5c5c5c] text-lg font-medium focus:outline-none focus:ring-2 focus:ring-[#ff4141]"
           />
           <input
             type="password"
             placeholder="Password"
-            className="h-[40px] w-sm pl-[20px] border border-[#c9c9c9] outline-none text-[#5c5c5c] text-[18px] font-medium cursor-pointer"
+            className="h-10 w-full px-5 border border-[#c9c9c9] rounded-md text-[#5c5c5c] text-lg font-medium focus:outline-none focus:ring-2 focus:ring-[#ff4141]"
           />
-          <button className="w-[200px] h-[40px] mt-[10px] bg-[#ff4141] text-white text-[20px] font-medium cursor-pointer">
+          <button
+            type="submit"
+            className="w-full sm:w-[200px] mx-auto h-10 bg-[#ff4141] rounded-full text-white text-lg font-medium cursor-pointer hover:bg-red-600 transition"
+          >
             Continue
           </button>
-        </div>
+        </form>
 
-        <p className="mt-[20px] text-[#5c5c5c] text-[18px] font-medium">
+        <p className="mt-6 text-center text-[#5c5c5c] text-lg font-medium">
           Already have an account?{' '}
-          <span className="text-[#ff4141] font-semibold cursor-pointer">Login here</span>
+          <button className="text-[#ff4141] font-semibold hover:underline focus:outline-none">
+            Login here
+          </button>
         </p>
 
-        <div className="flex items-center justify-center gap-[20px] mt-[25px] text-[#5c5c5c] text-[18px] font-medium ">
-          <input type="checkbox" />
-          <p>By continuing, I agree to the terms of use &amp; privacy policy.</p>
-        </div>
+        <label className="flex items-center justify-center gap-3 mt-4 text-[#5c5c5c] text-base font-medium cursor-pointer select-none">
+          <input type="checkbox" className="w-4 h-4" />
+          <span>By continuing, I agree to the terms of use &amp; privacy policy.</span>
+        </label>
       </div>
-
     </div>
   );
 };

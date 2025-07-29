@@ -5,6 +5,7 @@ import Bredcrums from '../components/Bredcrums';
 import ProductDisplay from '../components/ProductDisplay';
 import Description from '../components/Description';
 import RelatedProducts from '../components/RelatedProducts';
+
 const Product = () => {
   const {all_product} = useContext(ShopContext);
   const {productId} = useParams();
@@ -19,4 +20,4 @@ const Product = () => {
   )
 }
 
-export default Product
+export default Product;

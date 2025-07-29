@@ -4,79 +4,107 @@ import { ShopContext } from '../ShopContext';
 
 const CartItems = () => {
   const { getTotalCartAmount, all_product, cartItems, removeFromCart } = useContext(ShopContext);
+  const total = getTotalCartAmount();
 
   return (
-    <div className=" mx-[70px] my-[50px]">
-      {/* Header row */}
-      <div className="grid grid-cols-[0.5fr_2fr_1fr_1fr_1fr_1fr] items-center gap-[30px] py-2 text-[#454545] text-lg font-semibold">
-        <p>Products</p>
+    <div className="px-4 py-10 max-w-7xl mx-auto">
+      <h2 className="text-xl sm:text-2xl font-bold mb-8">Your Cart</h2>
+
+      {/* ---------- Desktop Layout ---------- */}
+      <div className="hidden md:grid grid-cols-6 gap-6 font-semibold text-gray-700 border-b pb-2 mb-4">
+        <p>Product</p>
         <p>Title</p>
         <p>Price</p>
-        <p>Quantity</p>
+        <p>Qty</p>
         <p>Total</p>
         <p>Remove</p>
       </div>
-      <hr className="h-[3px] bg-[#e2e2e2] border-0" />
 
-      {/* Cart items */}
-      {all_product.map((e) => {
-        if (cartItems[e.id] > 0) {
-          return (
-            <div key={e.id}>
-              <div className="grid grid-cols-[0.5fr_2fr_1fr_1fr_1fr_1fr] items-center gap-[30px] py-2 text-base font-medium">
-                <img src={e.image} alt="" className="h-[50px]" />
-                <p>{e.name}</p>
-                <p>${e.new_price}</p>
-                <button className="h-[40px] w-[100px] border border-gray-300">{cartItems[e.id]}</button>
-                <p>${e.new_price * cartItems[e.id]}</p>
-                <img
-                  src={remove_icon}
-                  alt="Remove"
-                  className="w-[15px] mx-[30px] cursor-pointer"
-                  onClick={() => removeFromCart(e.id)}
-                />
+      {/* ---------- Cart Items ---------- */}
+      <div className="space-y-6">
+        {all_product.map((item) => {
+          const quantity = cartItems[item.id];
+          if (quantity > 0) {
+            const totalPrice = item.new_price * quantity;
+            return (
+              <div key={item.id} className="border-b pb-4">
+                {/* Mobile layout */}
+                <div className="block md:hidden space-y-2">
+                  <div className="flex items-center gap-4">
+                    <img src={item.image} alt={item.name} className="h-16 w-16 object-cover rounded" />
+                    <div>
+                      <p className="font-medium text-gray-800">{item.name}</p>
+                      <p className="text-sm text-gray-500">Price: £{item.new_price}</p>
+                      <p className="text-sm text-gray-500">Quantity: {quantity}</p>
+                      <p className="text-sm text-gray-800 font-semibold">Total: £{totalPrice}</p>
+                    </div>
+                    <img
+                      src={remove_icon}
+                      alt="Remove"
+                      className="w-4 h-4 ml-auto cursor-pointer"
+                      onClick={() => removeFromCart(item.id)}
+                    />
+                  </div>
+                </div>
+
+                {/* Desktop layout */}
+                <div className="hidden md:grid grid-cols-6 gap-6 items-center text-sm font-medium">
+                  <img src={item.image} alt={item.name} className="h-16 object-cover" />
+                  <p>{item.name}</p>
+                  <p>£{item.new_price}</p>
+                  <button className="w-16 h-10 border border-gray-300 text-center">
+                    {quantity}
+                  </button>
+                  <p>£{totalPrice}</p>
+                  <img
+                    src={remove_icon}
+                    alt="Remove"
+                    className="w-4 cursor-pointer "
+                    onClick={() => removeFromCart(item.id)}
+                  />
+                </div>
               </div>
-              <hr className="h-[3px] bg-[#e2e2e2] border-0" />
-            </div>
-          );
-        }
-        return null;
-      })}
+            );
+          }
+          return null;
+        })}
+      </div>
 
-      {/* Bottom section */}
-      <div className="flex flex-col lg:flex-row mt-[70px] mb-[70px] gap-8">
-        {/* Cart totals */}
-        <div className="flex-1 flex flex-col gap-[30px] lg:mr-[200px]">
-          <h1 className="text-2xl font-bold">Cart Totals</h1>
-          <div className="space-y-4">
-            <div className="flex justify-between py-3 border-b border-gray-300">
-              <p>Subtotal</p>
-              <p>${getTotalCartAmount()}</p>
+      {/* ---------- Bottom Section ---------- */}
+      <div className="flex flex-col lg:flex-row justify-between gap-10 mt-12">
+        
+        {/* Totals */}
+        <div className="w-full lg:w-1/2 space-y-6">
+          <h3 className="text-xl font-bold">Cart Totals</h3>
+          <div className="text-sm sm:text-base space-y-3">
+            <div className="flex justify-between border-b py-2">
+              <span>Subtotal</span>
+              <span>£{total}</span>
             </div>
-            <div className="flex justify-between py-3 border-b border-gray-300">
-              <p>Shipping Fee</p>
-              <p>Free</p>
+            <div className="flex justify-between border-b py-2">
+              <span>Shipping</span>
+              <span>Free</span>
             </div>
-            <div className="flex justify-between py-3 border-b border-gray-300">
-              <p>Total</p>
-              <p>${getTotalCartAmount()}</p>
+            <div className="flex justify-between border-b py-2 font-semibold">
+              <span>Total</span>
+              <span>£{total}</span>
             </div>
           </div>
-          <button className="w-[250px] h-[50px] bg-[#ff5a5a] text-white text-base font-semibold hover:opacity-90 transition cursor-pointer">
+          <button className="w-full sm:w-60 h-12 bg-[#ff5a5a] text-white font-semibold hover:opacity-90 transition rounded">
             PROCEED TO CHECKOUT
           </button>
         </div>
 
-        {/* Promo code section */}
-        <div className="flex-1 text-base font-medium">
-          <p className="text-gray-600">If you have a promo code, enter it here</p>
-          <div className="w-[300px] h-[50px] bg-[#eaeaea] mt-4 flex items-center pl-5">
+        {/* Promo Code */}
+        <div className="w-full lg:w-1/2">
+          <p className="text-gray-700 mb-2 text-sm">Have a promo code?</p>
+          <div className="flex flex-col sm:flex-row gap-3">
             <input
               type="text"
               placeholder="Promo code"
-              className="bg-transparent outline-none border-none text-base w-full h-full"
+              className="flex-1 py-2 px-4 border border-gray-300 rounded outline-none"
             />
-            <button className="w-[150px] h-[50px] bg-black text-white text-base font-medium hover:opacity-90 transition cursor-pointer">
+            <button className="w-full sm:w-[150px] h-12 bg-black text-white rounded hover:opacity-90 transition">
               Submit
             </button>
           </div>
@@ -87,4 +115,3 @@ const CartItems = () => {
 };
 
 export default CartItems;
-
