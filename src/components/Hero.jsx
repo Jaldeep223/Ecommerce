@@ -1,7 +1,7 @@
 import React from 'react';
 import hand_icon from "../assets/hand_icon.webp";
 import arrow_icon from "../assets/arrow_icon.png";
-import men from "../assets/p8.webp";
+import women from "../assets/p8.webp";
 
 const Hero = () => {
   return (
@@ -29,7 +29,7 @@ const Hero = () => {
         {/* Right Section - Image */}
         <div className="w-full md:w-1/2 flex justify-center">
           <img
-            src={men}
+            src={women}
             alt="hero"
             className="w-full max-w-[350px] sm:max-w-[400px] md:max-w-[500px] object-cover"
           />

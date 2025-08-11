@@ -1,20 +1,20 @@
-import React, { useContext } from 'react'
-import { ShopContext } from '../ShopContext'
-import dropdown_icon from "../assets/dropdown_icon.png"
-import Item from '../components/Item'
+import React, { useContext } from 'react';
+import { ShopContext } from '../ShopContext';
+import dropdown_icon from "../assets/dropdown_icon.png";
+import Item from '../components/Item';
 
 const ShopCategory = (props) => {
   const { all_product } = useContext(ShopContext);
 
   return (
     <div className="shop-category flex flex-col items-center gap-10 mt-10 mb-20">
-      {/* Banner Image */}
+      {/* Responsive Banner Image */}
       <img
-        className="m-1  w-full md:w-[82%]"
+        className=" mt-20 w-full max-w-[1200px] h-auto md:h-[300px] lg:h-[400px] object-cover rounded-md"
         src={props.banner}
-        alt=""
+        alt={`${props.category} banner`}
       />
-      
+
       {/* Sort Section */}
       <div className="flex flex-col sm:flex-row justify-between items-center w-full px-5 md:px-32">
         <p className="text-sm sm:text-base">
@@ -26,28 +26,27 @@ const ShopCategory = (props) => {
       </div>
 
       {/* Product Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-y-[80px] mx-auto mt-5 w-full px-5 sm:px-10 md:px-32">
-        {all_product.map((item, i) =>
-          props.category === item.category ? (
-            <Item
-              key={item.id}  // Use item.id instead of index for uniqueness
-              id={item.id}
-              name={item.name}
-              image={item.image}
-              new_price={item.new_price}
-              old_price={item.old_price}
-            />
-          ) : null
-        )}
-      </div>
+<div className="grid justify-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-20 mx-auto mt-5 w-full px-5 sm:px-10 md:px-32">
+  {all_product
+    .filter(item => item.category === props.category)
+    .map(item => (
+      <Item
+        key={item.id}
+        id={item.id}
+        name={item.name}
+        image={item.image}
+        new_price={item.new_price}
+        old_price={item.old_price}
+      />
+    ))}
+</div>
 
       {/* Explore More Button */}
       <div className="flex justify-center items-center mx-auto my-16 w-[200px] h-[60px] rounded-[75px] bg-gray-200 text-[#272424] text-lg font-medium cursor-pointer">
         Explore More
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default ShopCategory;
-

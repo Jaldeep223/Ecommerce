@@ -38,7 +38,7 @@ const Footer = () => {
         {/* Divider + Copyright */}
         <div className="w-full flex flex-col items-center gap-5 mt-6 text-sm sm:text-base text-[#1a1a1a]">
           <hr className="w-4/5 border-t border-[#c7c7c7]" />
-          <p>© 2025 Shopify. All Rights Reserved.</p>
+          <p>© 2025 वेदा. All Rights Reserved.</p>
         </div>
       </div>
     </footer>

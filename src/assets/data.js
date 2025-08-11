@@ -1,8 +1,8 @@
 
 import p1_img from '../assets/women1.jpeg';
-import p2_img from '../assets/p2.webp';
-import p3_img from '../assets/p3.avif'; 
-import p4_img from '../assets/p4.webp';
+import p17_img from '../assets/p2.webp';
+import p18_img from '../assets/p3.avif'; 
+import p19_img from '../assets/p4.webp';
 
 let data_product = [
      {
@@ -14,9 +14,9 @@ let data_product = [
             old_price: 80.5
         },
     
-        { id: 2, name: "Jeans", category: "men", image: p2_img, new_price: 60.0, old_price: 90.5 },
-        { id: 3, name: "Saree", category: "women", image: p3_img, new_price: 75.0, old_price: 120.0 },
-        { id: 4, name: "Jacket", category: "men", image: p4_img, new_price: 90.0, old_price: 140.0 }
+        { id: 17, name: "Jeans", category: "men", image: p17_img, new_price: 60.0, old_price: 90.5 },
+        { id: 18, name: "Saree", category: "women", image: p18_img, new_price: 75.0, old_price: 120.0 },
+        { id: 19, name: "Jacket", category: "men", image: p19_img, new_price: 90.0, old_price: 140.0 }
 ]
 
 export default data_product;
